@@ -4,21 +4,19 @@ import Navbar from "./Navbar";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <header className="w-full shadow-md bg-white z-10">
+    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
+      <header className="w-full shadow-md bg-white z-10 fixed top-0 left-0">
         <Navbar />
       </header>
-      <main className="flex flex-1 flex-col md:flex-row p-4 gap-2">
-        {/* <aside className="w-full md:w-1/4 bg-white shadow rounded-lg">
-          <SideMenu />
-        </aside> */}
-        <section className="w-full md:w-full bg-white shadow rounded-lg mt-15">
+      {/* Add top padding to account for the fixed navbar height */}
+      <main className="pt-20 px-4 flex flex-1 flex-col gap-4">
+        <section className="w-full bg-white shadow rounded-lg">
           <ContentArea />
         </section>
       </main>
-      <footer className="w-full bg-gray-100 text-center shadow-inner">
+      <footer className="w-full bg-gray-100 text-center shadow-inner mt-4">
         <Footer />
-      </footer>
+      </footer>{" "}
     </div>
   );
 };
