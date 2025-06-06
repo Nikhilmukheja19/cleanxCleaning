@@ -15,11 +15,11 @@ const Home = () => {
         <section className="w-full bg-white shadow rounded-lg">
           <HeroSection />
         </section>
-        <section className="w-full bg-white shadow rounded-lg">
+        <section className="top-0 left-0 w-full bg-white shadow rounded-lg">
           <ContentArea />
         </section>
       </main>
-      <footer className="w-full bg-gray-100 text-center shadow-inner mt-4">
+      <footer className="top-0 left-0 w-full bg-gray-100 text-center shadow-inner mt-4">
         <Footer />
       </footer>
     </div>
