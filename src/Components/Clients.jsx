@@ -43,12 +43,10 @@ const clientsList = [
 const Clients = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="fixed top-0 left-0 w-full shadow-md bg-white z-50">
-        <Navbar />
-      </header>
+      <Navbar />
 
-      <main className="pt-20 max-w-7xl mx-auto px-6 pb-16">
-        <h1 className="text-4xl font-extrabold mb-10 text-center text-gray-900">
+      <main className="bg-gray-50 p-6">
+        <h1 className="text-4xl font-bold text-blue-700 mb-8 text-center">
           Our Clients
         </h1>
         <p className="text-center max-w-3xl mx-auto text-gray-700 mb-12">
