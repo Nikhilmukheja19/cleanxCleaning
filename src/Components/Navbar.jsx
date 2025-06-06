@@ -38,7 +38,7 @@ const Navbar = () => {
                 to={item.path}
                 key={idx}
                 className={`hover:text-blue-600 ${
-                  item.name === "About Us" ? "text-blue-600 font-medium" : ""
+                  item.name === item.path ? "text-blue-600 font-medium" : ""
                 }`}
               >
                 {item.name}

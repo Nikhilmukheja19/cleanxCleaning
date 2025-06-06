@@ -40,7 +40,7 @@ const blogData = [
 const BlogContent = () => {
   return (
     <>
-      <div className="space-y-20 px-6 py-16 max-w-7xl mx-auto">
+      <div className=" px-6 py-16 max-w-7xl mx-auto">
         {blogData.map((item, index) => {
           const imageVariant = {
             hidden: {
