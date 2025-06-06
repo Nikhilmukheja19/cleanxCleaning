@@ -4,8 +4,8 @@ import Navbar from "./Navbar";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
-      <header className="w-full shadow-md bg-white z-10 fixed top-0 left-0">
+    <div className="min-h-screen bg-gray-50">
+      <header className="w-full shadow-md bg-white z-10">
         <Navbar />
       </header>
       {/* Add top padding to account for the fixed navbar height */}
