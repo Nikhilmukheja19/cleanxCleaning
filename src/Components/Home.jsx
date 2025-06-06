@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
       <header className="w-full shadow-md bg-white z-10">
         <Navbar />
       </header>
