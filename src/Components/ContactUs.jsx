@@ -6,7 +6,15 @@ const ContactUs = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-white py-13 px-6 md:px-12 lg:px-24">
+      <div className="bg-white py-2 px-6 md:px-12 lg:px-24">
+        <h1 className="text-4xl font-bold text-blue-700 mb-1 text-center">
+          Contact Us
+        </h1>
+        <p className="text-center max-w-4xl mx-auto text-gray-700 mb-12">
+          Have questions or need a custom cleaning solution? Reach out to CleanX
+          Cleaning — we are here to help with reliable, tailored services for
+          every space.
+        </p>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left: Contact Form */}
           <div>

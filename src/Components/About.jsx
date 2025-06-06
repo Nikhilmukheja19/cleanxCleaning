@@ -40,14 +40,12 @@ const coreValues = [
 const About = () => {
   return (
     <div className="min-h-screen bg-gray-50 m-6">
-      <header className="fixed top-0 left-0 w-full shadow-md bg-white z-50">
-        <Navbar />
-      </header>
+      <Navbar />
 
-      <main className="pt-20 max-w-6xl mx-auto px-6 pb-16 space-y-16">
+      <main className=" max-w-6xl mx-auto px-6 pb-16 space-y-16">
         {/* Page Header */}
         <section className="text-center">
-          <h1 className="text-5xl font-extrabold mb-4 text-gray-900 flex justify-center items-center gap-3">
+          <h1 className="text-4xl font-bold mb-4 text-blue-700 flex justify-center items-center gap-3">
             <FiInfo size={40} className="text-blue-600" />
             About Us
           </h1>
