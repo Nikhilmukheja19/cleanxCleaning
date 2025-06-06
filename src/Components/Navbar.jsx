@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom"; // <-- import Link
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Define menu items with paths
   const menuItems = [
-    "Home",
-    "About Us",
-    "Clients",
-    "Services",
-    "Industries",
-    "Contact",
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/about" },
+    { name: "Clients", path: "/clients" },
+    { name: "Services", path: "/services" },
+    { name: "Industries", path: "/industries" },
+    { name: "Contact", path: "/contactus" },
   ];
 
   return (
@@ -30,22 +32,22 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8 text-gray-700">
             {menuItems.map((item, idx) => (
-              <a
-                href="#"
+              <Link
+                to={item.path}
                 key={idx}
                 className={`hover:text-blue-600 ${
-                  item === "About Us" ? "text-blue-600 font-medium" : ""
+                  item.name === "About Us" ? "text-blue-600 font-medium" : ""
                 }`}
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
-            <a
-              href="#"
+            <Link
+              to="/free-quote"
               className="bg-sky-500 text-white font-semibold px-5 py-2 rounded hover:bg-sky-600 transition"
             >
               Free Quote
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -60,20 +62,22 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden bg-white px-4 pb-4 space-y-2 transition-all duration-300">
             {menuItems.map((item, idx) => (
-              <a
-                href="#"
+              <Link
+                to={item.path}
                 key={idx}
                 className="block text-gray-700 hover:text-blue-600"
+                onClick={() => setIsOpen(false)} // close menu on click
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
-            <a
-              href="#"
+            <Link
+              to="/free-quote"
               className="block text-center bg-sky-500 text-white font-semibold px-4 py-2 rounded hover:bg-sky-600 transition"
+              onClick={() => setIsOpen(false)}
             >
               Free Quote
-            </a>
+            </Link>
           </div>
         )}
       </nav>
