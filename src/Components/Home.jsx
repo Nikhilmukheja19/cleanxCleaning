@@ -9,7 +9,7 @@ const Home = () => {
         <Navbar />
       </header>
       {/* Add top padding to account for the fixed navbar height */}
-      <main className="pt-20 px-4 flex flex-1 flex-col gap-4">
+      <main className="flex flex-1 flex-col gap-4">
         <section className="w-full bg-white shadow rounded-lg">
           <ContentArea />
         </section>
