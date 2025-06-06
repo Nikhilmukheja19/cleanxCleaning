@@ -23,7 +23,7 @@ const Navbar = () => {
           <Link to="/">
             <div className="flex items-center space-x-2">
               <div className="text-xl font-bold text-blue-700">
-                Canex Cleaning{" "}
+                CleanX Cleaning{" "}
                 <span className="block text-sm font-normal text-gray-600">
                   Building Maintenance LTD.
                 </span>
