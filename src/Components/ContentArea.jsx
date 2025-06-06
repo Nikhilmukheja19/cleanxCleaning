@@ -1,6 +1,5 @@
 // BlogContent.jsx
 import { motion } from "framer-motion";
-import ContactUs from "./ContactUs";
 
 const blogData = [
   {
@@ -97,7 +96,6 @@ const BlogContent = () => {
           );
         })}
       </div>
-      <ContactUs />
     </>
   );
 };
