@@ -1,15 +1,21 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom"; // <-- import Link
-
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/canexclenaing.png";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleClientForm = (e) => {
+    e.preventDefault();
+    console.log("clicked");
+    navigate("/clientform");
+  };
 
   // Define menu items with paths
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
-    { name: "Clients", path: "/clients" },
+    // { name: "Clients", path: "/clients" },
     { name: "Services", path: "/services" },
     { name: "Industries", path: "/industries" },
     { name: "Contact", path: "/contactus" },
@@ -18,9 +24,13 @@ const Navbar = () => {
   return (
     <>
       <nav className="bg-white shadow-md fixed top-0 left-0 w-full">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center w-full">
-          {/* Logo */}
-          <Link to="/">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+          <Link to="/" className="flex items-center space-x-3">
+            <img
+              src={logo}
+              alt="CleanX Logo"
+              className="h-11 w-11 object-cover rounded-full"
+            />
             <div className="flex items-center space-x-2">
               <div className="text-xl font-bold text-blue-700">
                 CleanX Cleaning{" "}
@@ -45,10 +55,11 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              to="/free-quote"
+              to="/clientform"
               className="bg-sky-500 text-white font-semibold px-5 py-2 rounded hover:bg-sky-600 transition"
+              onClick={(e) => handleClientForm(e)}
             >
-              Free Quote
+              Book Now
             </Link>
           </div>
 
@@ -74,7 +85,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              to="/free-quote"
+              to="/clientform"
               className="block text-center bg-sky-500 text-white font-semibold px-4 py-2 rounded hover:bg-sky-600 transition"
               onClick={() => setIsOpen(false)}
             >
