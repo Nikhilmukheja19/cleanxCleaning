@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  const handlebooking = () => {
+    console.log("clicked");
+    navigate("/clientform");
+  };
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-purple-100 via-blue-100 to-white py-24 px-6 md:px-20">
       {/* Decorative Blobs */}
@@ -27,7 +33,11 @@ const HeroSection = () => {
             <button className="bg-red-700 hover:bg-red-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out">
               Learn More
             </button>
-            <button className="bg-white text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out">
+            <button
+              type="button"
+              onClick={() => handlebooking()}
+              className="bg-white text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out"
+            >
               Book Now
             </button>
           </div>
