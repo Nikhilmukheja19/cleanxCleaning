@@ -7,6 +7,7 @@ import Industries from "./Components/Industries";
 import About from "./Components/About";
 import ClientForm from "./Components/ClientForm";
 import ScrollToTop from "./Components/ScroolToTop";
+import LearnMore from "./Components/LearnMore";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/clientform" element={<ClientForm />} />
+        <Route path="/learnmore" element={<LearnMore />} />
       </Routes>
     </div>
   );
