@@ -68,6 +68,27 @@ const ClientForm = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-2xl"
       >
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center text-blue-600 hover:text-blue-800 mb-4"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          <span className="text-sm font-medium">Back</span>
+        </button>
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 flex items-center justify-center gap-2">
           <FaCalendarAlt className="text-blue-600" />
           Booking Form
