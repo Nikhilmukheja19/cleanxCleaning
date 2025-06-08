@@ -23,20 +23,20 @@ const HeroSection = () => {
           className="text-center lg:text-left max-w-xl"
         >
           <h1 className="text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight mb-6 drop-shadow-sm">
-            Sparkle Your Space with <span className="text-red-700">CaneX</span>
+            Sparkle Your Space with <span className="text-blue-700">CaneX</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
             Your trusted partner for premium cleaning services. Residential or
             commercial – we bring hygiene and brilliance with eco-friendly care.
           </p>
           <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-            <button className="bg-red-700 hover:bg-red-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out">
+            <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out">
               Learn More
             </button>
             <button
               type="button"
               onClick={() => handlebooking()}
-              className="bg-white text-red-700 border border-red-700 hover:bg-red-700 hover:text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out"
+              className="bg-white text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out"
             >
               Book Now
             </button>
