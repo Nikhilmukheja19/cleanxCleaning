@@ -90,7 +90,7 @@ const Navbar = () => {
               className="block text-center bg-sky-500 text-white font-semibold px-4 py-2 rounded hover:bg-sky-600 transition"
               onClick={() => setIsOpen(false)}
             >
-              Free Quote
+              Book Now
             </Link>
           </div>
         )}
