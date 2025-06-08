@@ -66,19 +66,19 @@ const ContactUs = () => {
             <div className="space-y-4 text-sky-600 font-medium">
               <div className="flex items-center gap-3">
                 <span>🏢</span>
-                <span>Office: +1 (604) 377-5579</span>
+                <span>Office: 604-518-0623</span>
               </div>
               <div className="flex items-center gap-3">
                 <span>💬</span>
-                <span>Estimates: +1 (778) 862-9427</span>
+                <span>Estimates: 778-239-1390</span>
               </div>
               <div className="flex items-center gap-3">
                 <span>✉️</span>
-                <span>Email: info@lionsgatemaintenance.com</span>
+                <span>Email: Canexcleaning@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <span>📍</span>
-                <span>Address: 6692 Dawson Street, Vancouver BC, V5S 2W1</span>
+                <span>Address: 6736 13b street, V3W 7M5, Surrey, B.c</span>
               </div>
             </div>
           </div>
