@@ -50,7 +50,7 @@ const About = () => {
             About Us
           </h1>
           <p className="max-w-3xl mx-auto text-gray-700 text-lg">
-            Cleanx Cleaning is dedicated to providing outstanding cleaning and
+            CaneX Cleaning is dedicated to providing outstanding cleaning and
             maintenance services with professionalism and care. Our goal is to
             create healthier, cleaner spaces for our clients.
           </p>
@@ -138,7 +138,7 @@ const About = () => {
                 2015 - Founded
               </h3>
               <p className="text-gray-700">
-                Cleanx Cleaning was founded with a vision to transform the
+                CaneX Cleaning was founded with a vision to transform the
                 cleaning industry.
               </p>
             </li>

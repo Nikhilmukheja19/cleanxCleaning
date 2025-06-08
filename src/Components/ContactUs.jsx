@@ -11,7 +11,7 @@ const ContactUs = () => {
           Contact Us
         </h1>
         <p className="text-center max-w-4xl mx-auto text-gray-700 mb-12">
-          Have questions or need a custom cleaning solution? Reach out to CleanX
+          Have questions or need a custom cleaning solution? Reach out to
           Cleaning — we are here to help with reliable, tailored services for
           every space.
         </p>

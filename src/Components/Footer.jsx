@@ -1,39 +1,37 @@
 // Footer.jsx
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+// Optional: Uncomment icons if you plan to use them
+// import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto p-2 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-        {/* Brand */}
-        <div>
-          <h1 className="text-xl font-bold text-blue-500">Canex Cleaning</h1>
-          <p className="text-sm mt-1 text-gray-400 leading-snug">
-            © 2025 Canex Cleaning Building Maintainance Ltd
-          </p>
-        </div>
+      {/* Centered container */}
+      <div className="max-w-7xl mx-auto p-4 flex flex-col items-center justify-center text-center">
+        {/* Brand Name */}
+        <h1 className="text-xl font-bold text-blue-500">Canex Cleaning</h1>
 
-        {/* Empty Column (optional for spacing or future links) */}
-        <div className="hidden md:block" />
+        {/* Tagline or Rights */}
+        <p className="text-sm mt-1 text-gray-400 leading-snug">
+          © 2025 Canex Cleaning Building Maintenance Ltd.
+        </p>
 
-        {/* Social */}
-        <div className="md:text-right">
-          <h2 className="text-sm font-semibold mb-2">Follow Us</h2>
-          <div className="flex md:justify-end space-x-3 text-gray-400">
-            <a href="#">
-              <Facebook className="hover:text-blue-500 w-5 h-5" />
-            </a>
-            <a href="#">
-              <Twitter className="hover:text-blue-400 w-5 h-5" />
-            </a>
-            <a href="#">
-              <Instagram className="hover:text-pink-400 w-5 h-5" />
-            </a>
-            <a href="#">
-              <Linkedin className="hover:text-blue-600 w-5 h-5" />
-            </a>
-          </div>
+        {/* Optional: Social media icons (centered) */}
+        {/*
+        <div className="flex justify-center space-x-4 mt-3 text-gray-400">
+          <a href="#" aria-label="Facebook">
+            <Facebook className="hover:text-blue-500 w-5 h-5" />
+          </a>
+          <a href="#" aria-label="Twitter">
+            <Twitter className="hover:text-blue-400 w-5 h-5" />
+          </a>
+          <a href="#" aria-label="Instagram">
+            <Instagram className="hover:text-pink-400 w-5 h-5" />
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <Linkedin className="hover:text-blue-600 w-5 h-5" />
+          </a>
         </div>
+        */}
       </div>
     </footer>
   );
