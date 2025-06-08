@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
   const navigate = useNavigate();
   const handlebooking = () => {
-    console.log("clicked");
     navigate("/clientform");
+  };
+  const handleLearnMore = () => {
+    navigate("/learnmore");
   };
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-purple-100 via-blue-100 to-white py-24 px-6 md:px-20">
@@ -30,7 +32,11 @@ const HeroSection = () => {
             commercial – we bring hygiene and brilliance with eco-friendly care.
           </p>
           <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-            <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out">
+            <button
+              className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out"
+              type="button"
+              onClick={() => handleLearnMore()}
+            >
               Learn More
             </button>
             <button
