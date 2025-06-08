@@ -44,7 +44,7 @@ const ContactUs = () => {
               />
               <button
                 type="submit"
-                className="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-6 py-3 rounded-md"
+                className="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md"
               >
                 Send Message
               </button>
@@ -63,7 +63,7 @@ const ContactUs = () => {
               and request a free quote.
             </p>
 
-            <div className="space-y-4 text-sky-600 font-medium">
+            <div className="space-y-4 text-blue-600 font-medium">
               <div className="flex items-center gap-3">
                 <span>🏢</span>
                 <span>Office: 604-518-0623</span>
