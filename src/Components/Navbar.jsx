@@ -24,12 +24,12 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-3">
             <img
               src={logo}
-              alt="CleanX Logo"
+              alt=" Logo"
               className="h-10 w-10 object-cover rounded-full"
             />
             <div>
               <h1 className="text-xl font-bold text-blue-700">
-                CleanX Cleaning
+                CaneX Cleaning
               </h1>
               <span className="text-sm text-gray-600">
                 Building Maintenance LTD.

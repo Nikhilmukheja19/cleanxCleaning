@@ -50,7 +50,7 @@ const Industries = () => {
           Industries We Serve
         </h1>
         <p className="text-center max-w-4xl mx-auto text-gray-700 mb-12">
-          Cleanx Cleaning provides tailored cleaning services across a wide
+          CaneX Cleaning provides tailored cleaning services across a wide
           range of industries, ensuring cleanliness, safety, and customer
           satisfaction.
         </p>

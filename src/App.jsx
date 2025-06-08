@@ -6,10 +6,12 @@ import Services from "./Components/Services";
 import Industries from "./Components/Industries";
 import About from "./Components/About";
 import ClientForm from "./Components/ClientForm";
+import ScrollToTop from "./Components/ScroolToTop";
 
 const App = () => {
   return (
     <div>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/clients" element={<Clients />} /> */}

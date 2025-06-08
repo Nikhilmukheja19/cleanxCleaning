@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 const blogData = [
   {
-    title: "CleanX - Professional Cleaning Solutions",
+    title: "CaneX - Professional Cleaning Solutions",
     content:
-      "Experience the best cleaning services with CleanX. From homes to offices, we ensure spotless results with eco-friendly practices.",
+      "Experience the best cleaning services with CaneX. From homes to offices, we ensure spotless results with eco-friendly practices.",
     image:
       "https://goinggreencs.com/wp-content/uploads/2020/03/AdobeStock_199161361-Cleaning-services-header-image-Resize.jpg",
     imageRight: true,

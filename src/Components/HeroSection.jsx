@@ -23,7 +23,7 @@ const HeroSection = () => {
           className="text-center lg:text-left max-w-xl"
         >
           <h1 className="text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight mb-6 drop-shadow-sm">
-            Sparkle Your Space with <span className="text-red-700">CleanX</span>
+            Sparkle Your Space with <span className="text-red-700">CaneX</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
             Your trusted partner for premium cleaning services. Residential or
