@@ -9,10 +9,10 @@ const Navbar = () => {
 
   const menuItems = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
     // { name: "Clients", path: "/clients" },
     { name: "Services", path: "/services" },
     { name: "Industries", path: "/industries" },
+    { name: "About Us", path: "/about" },
     { name: "Contact", path: "/contactus" },
   ];
 
