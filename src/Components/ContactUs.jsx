@@ -1,69 +1,90 @@
-// import Footer from "./Footer";
+import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 
-// ContactUs.jsx
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 const ContactUs = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-white py-2 px-6 md:px-12 lg:px-24">
-        <h1 className="text-4xl font-bold text-blue-700 mb-1 text-center">
+      <motion.div
+        className="bg-white py-8 px-6 md:px-12 lg:px-24"
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUp}
+      >
+        <motion.h1
+          className="text-3xl md:text-4xl font-bold text-blue-700 mb-4 text-center"
+          variants={fadeInUp}
+        >
           Contact Us
-        </h1>
-        <p className="text-center max-w-4xl mx-auto text-gray-700 mb-12">
+        </motion.h1>
+        <motion.p
+          className="text-center max-w-3xl mx-auto text-gray-700 mb-12 text-base md:text-lg"
+          variants={fadeInUp}
+        >
           Have questions or need a custom cleaning solution? Reach out to
           Cleaning — we are here to help with reliable, tailored services for
           every space.
-        </p>
+        </motion.p>
+
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left: Contact Form */}
-          <div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
+          <motion.div variants={fadeInUp}>
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
               Send a Message
             </h2>
-            <form className="space-y-6">
-              <input
+            <form className="space-y-5">
+              <motion.input
                 type="text"
                 placeholder="Name"
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
+                whileFocus={{ scale: 1.02 }}
               />
-              <input
+              <motion.input
                 type="email"
                 placeholder="Email Address"
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
+                whileFocus={{ scale: 1.02 }}
               />
-              <input
+              <motion.input
                 type="text"
                 placeholder="Phone"
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
+                whileFocus={{ scale: 1.02 }}
               />
-              <textarea
+              <motion.textarea
                 rows="4"
                 placeholder="Message"
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
+                whileFocus={{ scale: 1.02 }}
               />
-              <button
+              <motion.button
                 type="submit"
-                className="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md"
+                className="bg-blue-700 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md"
+                whileHover={{ scale: 1.05 }}
               >
                 Send Message
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Right: Contact Information */}
-          <div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+          <motion.div variants={fadeInUp}>
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
               Contact Information
             </h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-600 mb-8 text-sm md:text-base">
               It is our job to save you time so you can tend to your most
               important commitments. To get started and learn more about how we
               work, get in touch with us to speak to one of our representatives
               and request a free quote.
             </p>
 
-            <div className="space-y-4 text-blue-600 font-medium">
+            <div className="space-y-4 text-blue-600 font-medium text-sm md:text-base">
               <div className="flex items-center gap-3">
                 <span>🏢</span>
                 <span>Office: 604-518-0623</span>
@@ -78,13 +99,12 @@ const ContactUs = () => {
               </div>
               <div className="flex items-center gap-3">
                 <span>📍</span>
-                <span>Address: 6736 13b street, V3W 7M5, Surrey, B.c</span>
+                <span>Address: 6736 13b street, V3W 7M5, Surrey, B.C</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
-      {/* <Footer /> */}
+      </motion.div>
     </>
   );
 };
