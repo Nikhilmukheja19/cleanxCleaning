@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const ClientForm = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
+  // const BASE_URL = "http://localhost:5000";
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -56,7 +57,20 @@ const ClientForm = () => {
     } catch (error) {
       console.log(error);
     }
-    console.log("Form submitted:", formData);
+    try {
+      const mailresponse = await axios.post(
+        `${BASE_URL}/order/sendmail`,
+        formData,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (mailresponse) {
+        console.log(mailresponse);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
