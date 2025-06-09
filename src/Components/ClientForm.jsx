@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -10,11 +11,13 @@ import {
 } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 const ClientForm = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
-  // const BASE_URL = "http://localhost:5000";
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -32,6 +35,8 @@ const ClientForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const orderresponse = await axios.post(
         `${BASE_URL}/order/orderSaved`,
@@ -42,6 +47,10 @@ const ClientForm = () => {
       );
 
       if (orderresponse) {
+        await axios.post(`${BASE_URL}/order/sendmail`, formData, {
+          headers: { "Content-Type": "application/json" },
+        });
+
         setFormData({
           fullName: "",
           email: "",
@@ -52,26 +61,18 @@ const ClientForm = () => {
           state: "",
           zip: "",
         });
+
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
-    }
-    try {
-      const mailresponse = await axios.post(
-        `${BASE_URL}/order/sendmail`,
-        formData,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      if (mailresponse) {
-        console.log(mailresponse);
-      }
-    } catch (error) {
-      console.log(error);
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  // ✅ Show loader while loading
+  if (loading) return <Loader />;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 flex items-center justify-center px-4 py-10">
@@ -86,6 +87,7 @@ const ClientForm = () => {
         <button
           onClick={() => navigate(-1)}
           className="flex items-center text-blue-600 hover:text-blue-800 mb-4"
+          type="button"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -103,6 +105,7 @@ const ClientForm = () => {
           </svg>
           <span className="text-sm font-medium">Back</span>
         </button>
+
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 flex items-center justify-center gap-2">
           <FaCalendarAlt className="text-blue-600" />
           Booking Form
@@ -172,7 +175,6 @@ const ClientForm = () => {
           whileTap={{ scale: 0.95 }}
           type="submit"
           className="mt-8 w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition"
-          onClick={handleSubmit}
         >
           Submit Booking
         </motion.button>
@@ -180,6 +182,7 @@ const ClientForm = () => {
     </div>
   );
 };
+
 const InputField = ({
   label,
   name,
