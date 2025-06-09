@@ -42,7 +42,7 @@ const clientsList = [
 
 const Clients = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 ">
       <Navbar />
 
       <main className="bg-gray-50 p-6">

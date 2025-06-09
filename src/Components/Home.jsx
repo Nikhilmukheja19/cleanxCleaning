@@ -10,7 +10,7 @@ const Home = () => {
       <header className="fixed top-0 left-0 right-0 w-full shadow-md bg-white z-50"></header>
 
       {/* Main content area with padding to account for fixed navbar */}
-      <main className="flex flex-1 flex-col gap-4 pt-20 px-4">
+      <main className="flex flex-1 flex-col pt-20  bg-gradient-to-br from-blue-100 via-blue-200 to-white">
         {/* <div className="max-w-7xl mx-auto space-y-6"> */}
         {/* Hero Section */}
         <section className="bg-white shadow rounded-lg">

@@ -11,7 +11,7 @@ const ContactUs = () => {
     <>
       <Navbar />
       <motion.div
-        className="bg-white py-8 px-6 md:px-12 lg:px-24"
+        className="bg-white py-8 px-6 md:px-12 lg:px-24 "
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
