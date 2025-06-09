@@ -1,5 +1,5 @@
-// BlogContent.jsx
 import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 
 const blogData = [
   {
@@ -16,7 +16,6 @@ const blogData = [
       "Our eco-friendly products keep your space clean without harming the environment. Choose green, live clean.",
     image:
       "https://tse2.mm.bing.net/th?id=OIP.KJEz8raFeQtNtic_28yQGQHaEK&pid=Api&P=0&h=220",
-
     imageRight: false,
   },
   {
@@ -39,64 +38,81 @@ const blogData = [
 
 const BlogContent = () => {
   return (
-    <>
-      <div className=" px-6 py-16 max-w-7xl mx-auto overflow-x-hidden">
-        {blogData.map((item, index) => {
-          const imageVariant = {
-            hidden: {
-              opacity: 0,
-              x: item.imageRight ? 100 : -100,
-            },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: { duration: 0.6, ease: "easeOut" },
-            },
-          };
+    <section className="py-16 px-6 max-w-7xl mx-auto overflow-x-hidden">
+      {blogData.map((item, index) => {
+        const imageVariant = {
+          hidden: {
+            opacity: 0,
+            x: item.imageRight ? 100 : -100,
+          },
+          visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.7, ease: "easeOut" },
+          },
+        };
 
-          const textVariant = {
-            hidden: {
-              opacity: 0,
-              x: item.imageRight ? -100 : 100,
-            },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: { duration: 0.6, ease: "easeOut" },
-            },
-          };
+        const textVariant = {
+          hidden: {
+            opacity: 0,
+            x: item.imageRight ? -100 : 100,
+          },
+          visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.7, ease: "easeOut" },
+          },
+        };
 
-          return (
-            <div
-              key={index}
-              className={`flex flex-col md:flex-row items-center gap-10 ${
-                item.imageRight ? "md:flex-row-reverse" : ""
-              }`}
+        return (
+          <div
+            key={index}
+            className={`flex flex-col md:flex-row items-center gap-12 mb-20 ${
+              item.imageRight ? "md:flex-row-reverse" : ""
+            }`}
+          >
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.3, once: true }}
+              variants={imageVariant}
+              className="w-full md:w-1/2"
             >
-              <motion.img
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ amount: 0.2 }}
-                variants={imageVariant}
-                src={item.image}
-                alt={item.title}
-                className="w-full md:w-1/2 h-64 object-cover rounded-xl shadow-lg"
-              />
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ amount: 0.2 }}
-                variants={textVariant}
-                className="md:w-1/2"
+              <Tilt
+                glareEnable={true}
+                glareMaxOpacity={0.3}
+                glareColor="#00ffea"
+                glarePosition="all"
+                scale={1.05}
+                transitionSpeed={400}
+                className="rounded-2xl shadow-xl cursor-pointer"
               >
-                <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
-                <p className="text-gray-600 text-lg">{item.content}</p>
-              </motion.div>
-            </div>
-          );
-        })}
-      </div>
-    </>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-72 object-cover rounded-2xl"
+                />
+              </Tilt>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.3, once: true }}
+              variants={textVariant}
+              className="md:w-1/2 bg-white bg-opacity-80 rounded-2xl p-8 shadow-md"
+            >
+              <h2 className="text-3xl font-extrabold mb-6 text-blue-800 ">
+                {item.title}
+              </h2>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                {item.content}
+              </p>
+            </motion.div>
+          </div>
+        );
+      })}
+    </section>
   );
 };
 
