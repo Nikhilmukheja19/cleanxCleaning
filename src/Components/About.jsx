@@ -54,7 +54,7 @@ const About = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <main className="max-w-6xl mx-auto px-6 pb-20 space-y-24 bg-gradient-to-b from-blue-50 to-blue-100">
+      <main className="max-w-8xl mx-auto px-6 pb-20 space-y-24 bg-gradient-to-b from-blue-50 to-blue-100">
         {/* Header */}
         <motion.section
           initial="hidden"
