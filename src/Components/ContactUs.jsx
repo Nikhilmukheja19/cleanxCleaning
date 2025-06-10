@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
+import { useState } from "react";
+import axios from "axios";
+import Loader from "./Loader";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -7,6 +10,50 @@ const fadeInUp = {
 };
 
 const ContactUs = () => {
+  // const BASE_URL = "http://localhost:5000";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const contactresponse = await axios.post(
+        `${BASE_URL}/order/getmail`,
+        formData,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (contactresponse) {
+        console.log(contactresponse);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+    console.log(formData);
+  };
+
+  if (loading) return <Loader />;
+
   return (
     <>
       <Navbar />
@@ -37,28 +84,40 @@ const ContactUs = () => {
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
               Send a Message
             </h2>
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={(e) => handleSubmit(e)}>
               <motion.input
                 type="text"
                 placeholder="Name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
                 whileFocus={{ scale: 1.02 }}
               />
               <motion.input
                 type="email"
+                name="email"
                 placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
                 whileFocus={{ scale: 1.02 }}
               />
               <motion.input
                 type="text"
                 placeholder="Phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
                 whileFocus={{ scale: 1.02 }}
               />
               <motion.textarea
                 rows="4"
                 placeholder="Message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
                 whileFocus={{ scale: 1.02 }}
               />
