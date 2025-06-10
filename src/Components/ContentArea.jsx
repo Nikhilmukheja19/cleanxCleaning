@@ -1,37 +1,37 @@
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import photo1 from "../assets/canex4.jpg";
+import photo2 from "../assets/canex2.jpg";
+import photo3 from "../assets/canex6.jpg";
+import photo4 from "../assets/image.png";
 
 const blogData = [
   {
     title: "CaneX - Professional Cleaning Solutions",
     content:
       "Experience the best cleaning services with CaneX. From homes to offices, we ensure spotless results with eco-friendly practices.",
-    image:
-      "https://tse2.mm.bing.net/th?id=OIP.KJEz8raFeQtNtic_28yQGQHaEK&pid=Api&P=0&h=220",
+    image: photo1,
     imageRight: true,
   },
   {
     title: "Eco-Friendly Cleaning",
     content:
       "Our eco-friendly products keep your space clean without harming the environment. Choose green, live clean.",
-    image:
-      "https://goinggreencs.com/wp-content/uploads/2020/03/AdobeStock_199161361-Cleaning-services-header-image-Resize.jpg",
+    image: photo2,
     imageRight: false,
   },
   {
     title: "Advanced Equipment",
     content:
       "We use the latest cleaning equipment to ensure efficient and deep cleaning for all surfaces.",
-    image:
-      "https://tse2.mm.bing.net/th?id=OIP.yRYXZEqKZUPTOP-IW-m0yAHaE7&pid=Api&P=0&h=220",
+    image: photo3,
     imageRight: true,
   },
   {
     title: "Affordable Plans",
     content:
       "Flexible and affordable pricing plans to suit your cleaning needs, whether it's weekly, monthly, or one-time.",
-    image:
-      "https://tse2.mm.bing.net/th?id=OIP.ngoWfsG9M7TtFu29oUV0UQHaDX&pid=Api&P=0&h=220",
+    image: photo4,
     imageRight: false,
   },
 ];
