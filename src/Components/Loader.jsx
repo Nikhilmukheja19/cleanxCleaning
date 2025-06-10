@@ -14,7 +14,7 @@ const Loader = () => {
           className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full"
         />
         <h3 className="mt-4 text-lg font-semibold text-gray-700">
-          Booking is in Progress....Please wait
+          Please wait
         </h3>{" "}
         {/* Added margin-top for spacing */}
       </div>
