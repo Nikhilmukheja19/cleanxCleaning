@@ -7,7 +7,7 @@ const blogData = [
     content:
       "Experience the best cleaning services with CaneX. From homes to offices, we ensure spotless results with eco-friendly practices.",
     image:
-      "https://goinggreencs.com/wp-content/uploads/2020/03/AdobeStock_199161361-Cleaning-services-header-image-Resize.jpg",
+      "https://tse2.mm.bing.net/th?id=OIP.KJEz8raFeQtNtic_28yQGQHaEK&pid=Api&P=0&h=220",
     imageRight: true,
   },
   {
@@ -15,7 +15,7 @@ const blogData = [
     content:
       "Our eco-friendly products keep your space clean without harming the environment. Choose green, live clean.",
     image:
-      "https://tse2.mm.bing.net/th?id=OIP.KJEz8raFeQtNtic_28yQGQHaEK&pid=Api&P=0&h=220",
+      "https://goinggreencs.com/wp-content/uploads/2020/03/AdobeStock_199161361-Cleaning-services-header-image-Resize.jpg",
     imageRight: false,
   },
   {

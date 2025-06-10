@@ -30,7 +30,7 @@ const Home = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-100 text-center shadow-inner mt-4">
+      <footer className="bg-gray-100 text-center shadow-inner">
         {/* <div className="max-w-7xl mx-auto px-4"> */}
         <Footer />
         {/* </div> */}
