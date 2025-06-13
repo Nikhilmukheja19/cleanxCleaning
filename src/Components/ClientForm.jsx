@@ -47,6 +47,10 @@ const ClientForm = () => {
       );
 
       if (orderresponse) {
+        setLoading(false);
+        await ShowAlert();
+        navigate("/");
+
         await axios.post(`${BASE_URL}/order/sendmail`, formData, {
           headers: { "Content-Type": "application/json" },
         });
@@ -61,13 +65,9 @@ const ClientForm = () => {
           state: "",
           zip: "",
         });
-        await ShowAlert();
-        navigate("/");
       }
     } catch (error) {
       console.error(error);
-    } finally {
-      setLoading(false);
     }
   };
 
