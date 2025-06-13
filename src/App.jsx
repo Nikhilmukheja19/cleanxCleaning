@@ -1,3 +1,4 @@
+import "animate.css";
 import ContactUs from "./Components/ContactUs";
 import Home from "./Components/Home";
 import { Routes, Route } from "react-router-dom";

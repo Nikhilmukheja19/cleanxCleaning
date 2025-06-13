@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
+import ShowAlert from "./ShowAlert";
 
 const ClientForm = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -61,7 +62,7 @@ const ClientForm = () => {
           state: "",
           zip: "",
         });
-
+        await ShowAlert();
         navigate("/");
       }
     } catch (error) {
