@@ -12,7 +12,7 @@ const Footer = () => {
 
         {/* Tagline or Rights */}
         <p className="text-sm mt-1 text-gray-400 leading-snug">
-          © 2025 Canex Cleaning Building Maintenance Ltd.
+          © 2023 Canex Cleaning Building Maintenance Ltd.
         </p>
 
         {/* Optional: Social media icons (centered) */}

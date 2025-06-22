@@ -14,7 +14,8 @@ import Loader from "./Loader";
 import ShowAlert from "./ShowAlert";
 
 const ClientForm = () => {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  // const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = "http://localhost:5000";
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,7 @@ const ClientForm = () => {
     city: "",
     state: "",
     zip: "",
+    serviceType: "",
   });
 
   const handleChange = (e) => {
@@ -64,6 +66,7 @@ const ClientForm = () => {
           city: "",
           state: "",
           zip: "",
+          serviceType: "",
         });
       }
     } catch (error) {
@@ -143,14 +146,28 @@ const ClientForm = () => {
             onChange={handleChange}
             Icon={FaCalendarAlt}
           />
-          <InputField
-            label="Street Address"
-            name="street"
-            value={formData.street}
-            onChange={handleChange}
-            Icon={FaMapMarkerAlt}
-            colSpan
-          />
+          <div>
+            <label className="block text-gray-700 font-medium mb-1">
+              Type of Service
+            </label>
+            <div className="relative">
+              <select
+                name="serviceType"
+                value={formData.serviceType}
+                onChange={handleChange}
+                className="w-full pl-4 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200 shadow-sm"
+                required
+              >
+                <option value="" disabled></option>
+                <option value="Home Cleaning">Home Cleaning</option>
+                <option value="Office Cleaning">Office Cleaning</option>
+                <option value="Deep Cleaning">Deep Cleaning</option>
+                <option value="Carpet Cleaning">Carpet Cleaning</option>
+                <option value="Sanitization">Sanitization</option>
+              </select>
+            </div>
+          </div>
+
           <InputField
             label="City"
             name="city"
@@ -168,6 +185,15 @@ const ClientForm = () => {
             name="zip"
             value={formData.zip}
             onChange={handleChange}
+          />
+
+          <InputField
+            label="Street Address"
+            name="street"
+            value={formData.street}
+            onChange={handleChange}
+            Icon={FaMapMarkerAlt}
+            colSpan
           />
         </div>
 

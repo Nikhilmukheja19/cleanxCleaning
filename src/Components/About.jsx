@@ -54,7 +54,7 @@ const About = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <main className="max-w-8xl mx-auto px-6 pb-20 space-y-24 bg-gradient-to-b from-blue-50 to-blue-100">
+      <main className="max-w-8xl mx-auto space-y-24 bg-gradient-to-b from-blue-50 to-blue-100">
         {/* Header */}
         <motion.section
           initial="hidden"
@@ -62,7 +62,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInUp}
           transition={{ duration: 0.5 }}
-          className="text-center mt-12"
+          className="text-center mb-10 pt-8"
         >
           <h1 className="text-4xl sm:text-5xl font-extrabold mb-6 text-blue-700 flex justify-center items-center gap-4">
             <FiInfo size={44} className="text-blue-600 animate-pulse" />
