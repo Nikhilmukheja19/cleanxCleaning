@@ -168,7 +168,7 @@ const ContentArea = () => {
 
           {/* End Arrow */}
           <div className="flex flex-col items-center z-10 mt-12 md:mt-0">
-            <div className="text-4xl mb-2 text-blue-600">📤</div>
+            <div className="text-4xl mb-2 text-blue-700">📤</div>
           </div>
         </div>
       </section>

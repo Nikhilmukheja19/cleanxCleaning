@@ -102,7 +102,7 @@ const LearnMore = () => {
               key={i}
               className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition"
             >
-              <div className="flex justify-center text-blue-600 mb-2">
+              <div className="flex justify-center text-blue-700 mb-2">
                 {service.icon}
               </div>
               <p className="text-blue-800 font-medium">{service.title}</p>
@@ -127,11 +127,11 @@ const LearnMore = () => {
               key={i}
               className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition"
             >
-              <div className="text-4xl font-bold text-blue-600 mb-2">
+              <div className="text-4xl font-bold text-blue-700 mb-2">
                 {i + 1}
               </div>
               <h4 className="text-blue-800 font-semibold">{step}</h4>
-              <p className="text-blue-600 text-sm mt-1">
+              <p className="text-blue-700 text-sm mt-1">
                 {step === "Book Service"
                   ? "Choose your service and schedule easily."
                   : step === "We Arrive"

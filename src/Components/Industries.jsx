@@ -33,7 +33,7 @@ const industriesList = [
     desc: "From classrooms to cafeterias, we ensure a healthy and inspiring environment for students and staff with daily and deep-clean options.",
   },
   {
-    icon: <FiHome size={28} className="text-blue-600" />,
+    icon: <FiHome size={28} className="text-blue-700" />,
     title: "Hospitality (Hotels & Restaurants)",
     desc: "We maintain pristine rooms, kitchens, and lobbies to meet industry expectations for guest satisfaction, safety, and hygiene.",
   },

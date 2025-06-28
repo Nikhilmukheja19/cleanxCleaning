@@ -146,7 +146,7 @@ const Services = () => {
                 <h4 className="text-lg font-semibold text-blue-700 mb-1">
                   {item.title}
                 </h4>
-                <p className="text-sm text-blue-600">{item.desc}</p>
+                <p className="text-sm text-blue-700">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -166,7 +166,7 @@ const Services = () => {
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {process.map((step, index) => (
               <div key={index} className="bg-white shadow rounded-xl p-6">
-                <div className="text-blue-600 text-4xl font-bold mb-2">
+                <div className="text-blue-700 text-4xl font-bold mb-2">
                   {step.step}
                 </div>
                 <h4 className="text-lg font-semibold text-blue-800">

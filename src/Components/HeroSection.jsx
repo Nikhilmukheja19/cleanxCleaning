@@ -17,7 +17,7 @@ const HeroSection = () => {
       >
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
           Sparkle Your Space with{" "}
-          <span className="text-blue-600">CaneX</span>
+          <span className="text-blue-700">CaneX</span>
         </h1>
         <p className="text-lg sm:text-xl mb-8 text-gray-700">
           Your trusted partner for premium cleaning services. Residential or
@@ -32,7 +32,7 @@ const HeroSection = () => {
           </button>
           <button
             onClick={handlebooking}
-            className="bg-transparent border border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition"
+            className="bg-transparent border border-blue-600 text-blue-700 px-8 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition"
           >
             Book Now
           </button>

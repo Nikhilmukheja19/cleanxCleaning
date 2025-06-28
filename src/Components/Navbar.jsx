@@ -43,9 +43,9 @@ const Navbar = () => {
               <Link
                 to={item.path}
                 key={idx}
-                className={`hover:text-blue-600 ${
+                className={`hover:text-blue-700 ${
                   location.pathname === item.path
-                    ? "text-blue-600 font-medium"
+                    ? "text-blue-700 font-medium"
                     : ""
                 }`}
               >
@@ -76,9 +76,9 @@ const Navbar = () => {
                 to={item.path}
                 key={idx}
                 onClick={() => setIsOpen(false)}
-                className={`block py-1 text-gray-700 hover:text-blue-600 ${
+                className={`block py-1 text-gray-700 hover:text-blue-700 ${
                   location.pathname === item.path
-                    ? "text-blue-600 font-medium"
+                    ? "text-blue-700 font-medium"
                     : ""
                 }`}
               >
@@ -87,7 +87,7 @@ const Navbar = () => {
             ))}
             <Link
               to="/clientform"
-              className="block text-center bg-sky-500 text-white font-semibold px-4 py-2 rounded hover:bg-sky-600 transition"
+              className="block text-center bg-sky-500 text-white font-semibold px-4 py-2 rounded hover:bg-sky-700 transition"
               onClick={() => setIsOpen(false)}
             >
               Book Now

@@ -28,7 +28,7 @@ const Footer = () => {
             <Instagram className="hover:text-pink-400 w-5 h-5" />
           </a>
           <a href="#" aria-label="LinkedIn">
-            <Linkedin className="hover:text-blue-600 w-5 h-5" />
+            <Linkedin className="hover:text-blue-700 w-5 h-5" />
           </a>
         </div>
         */}

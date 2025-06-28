@@ -23,17 +23,17 @@ const teamMembers = [
 
 const coreValues = [
   {
-    icon: <FiCheckCircle className="text-blue-600" size={28} />,
+    icon: <FiCheckCircle className="text-blue-700" size={28} />,
     title: "Quality",
     desc: "Delivering the highest standard in every cleaning service.",
   },
   {
-    icon: <FiUsers className="text-blue-600" size={28} />,
+    icon: <FiUsers className="text-blue-700" size={28} />,
     title: "Trust",
     desc: "Building lasting relationships with clients and employees.",
   },
   {
-    icon: <FiTarget className="text-blue-600" size={28} />,
+    icon: <FiTarget className="text-blue-700" size={28} />,
     title: "Commitment",
     desc: "Dedicated to exceeding expectations every time.",
   },
@@ -65,7 +65,7 @@ const About = () => {
           className="text-center mb-10 pt-8"
         >
           <h1 className="text-4xl sm:text-5xl font-extrabold mb-6 text-blue-700 flex justify-center items-center gap-4">
-            <FiInfo size={44} className="text-blue-600 animate-pulse" />
+            <FiInfo size={44} className="text-blue-700 animate-pulse" />
             About Us
           </h1>
           <p className="max-w-3xl mx-auto text-blue-900 text-lg sm:text-xl font-medium leading-relaxed tracking-wide">
@@ -257,7 +257,7 @@ const About = () => {
               {
                 number: "10+",
                 label: "Years of Service",
-                color: "text-blue-600",
+                color: "text-blue-700",
               },
               {
                 number: "150+",

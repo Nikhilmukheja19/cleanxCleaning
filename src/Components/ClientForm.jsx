@@ -89,7 +89,7 @@ const ClientForm = () => {
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center text-blue-600 hover:text-blue-800 mb-4"
+          className="flex items-center text-blue-700 hover:text-blue-800 mb-4"
           type="button"
         >
           <svg
@@ -110,7 +110,7 @@ const ClientForm = () => {
         </button>
 
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 flex items-center justify-center gap-2">
-          <FaCalendarAlt className="text-blue-600" />
+          <FaCalendarAlt className="text-blue-700" />
           Booking Form
         </h2>
 

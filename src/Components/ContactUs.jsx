@@ -143,7 +143,7 @@ const ContactUs = () => {
               and request a free quote.
             </p>
 
-            <div className="space-y-4 text-blue-600 font-medium text-sm md:text-base">
+            <div className="space-y-4 text-blue-700 font-medium text-sm md:text-base">
               <div className="flex items-center gap-3">
                 <span>🏢</span>
                 <span>Office: 604-518-0623</span>
