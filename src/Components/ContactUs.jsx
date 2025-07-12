@@ -10,7 +10,6 @@ const fadeInUp = {
 };
 
 const ContactUs = () => {
-  // const BASE_URL = "http://localhost:5000";
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const [loading, setLoading] = useState(false);
@@ -21,35 +20,46 @@ const ContactUs = () => {
     message: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    // Clear error for this field on change
+    setErrors({ ...errors, [e.target.name]: "" });
   };
+
+  const validate = () => {
+    let tempErrors = {};
+    if (!formData.name.trim()) tempErrors.name = "Name is required";
+    if (!formData.email.trim()) tempErrors.email = "Email is required";
+    if (!formData.phone.trim()) tempErrors.phone = "Phone is required";
+    if (!formData.message.trim()) tempErrors.message = "Message is required";
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
+
     setLoading(true);
     try {
       const contactresponse = await axios.post(
         `${BASE_URL}/order/getmail`,
         formData,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
+        { headers: { "Content-Type": "application/json" } }
       );
       if (contactresponse) {
         console.log(contactresponse);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        setErrors({});
       }
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
     }
-    console.log(formData);
   };
 
   if (loading) return <Loader />;
@@ -58,7 +68,7 @@ const ContactUs = () => {
     <>
       <Navbar />
       <motion.div
-        className="bg-white py-8 px-6 md:px-12 lg:px-24 "
+        className="bg-white py-8 px-6 md:px-12 lg:px-24"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
@@ -84,43 +94,67 @@ const ContactUs = () => {
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
               Send a Message
             </h2>
-            <form className="space-y-5" onSubmit={(e) => handleSubmit(e)}>
-              <motion.input
-                type="text"
-                placeholder="Name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
-                whileFocus={{ scale: 1.02 }}
-              />
-              <motion.input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
-                whileFocus={{ scale: 1.02 }}
-              />
-              <motion.input
-                type="text"
-                placeholder="Phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
-                whileFocus={{ scale: 1.02 }}
-              />
-              <motion.textarea
-                rows="4"
-                placeholder="Message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
-                whileFocus={{ scale: 1.02 }}
-              />
+            <form className="space-y-5" onSubmit={handleSubmit}>
+              <div>
+                <motion.input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
+                  whileFocus={{ scale: 1.02 }}
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                )}
+              </div>
+
+              <div>
+                <motion.input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
+                  whileFocus={{ scale: 1.02 }}
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
+              </div>
+
+              <div>
+                <motion.input
+                  type="text"
+                  placeholder="Phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
+                  whileFocus={{ scale: 1.02 }}
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
+              </div>
+
+              <div>
+                <motion.textarea
+                  rows="4"
+                  placeholder="Message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
+                  whileFocus={{ scale: 1.02 }}
+                />
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                )}
+              </div>
+
               <motion.button
                 type="submit"
                 className="bg-blue-700 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md"
@@ -131,16 +165,14 @@ const ContactUs = () => {
             </form>
           </motion.div>
 
-          {/* Right: Contact Information */}
+          {/* Right: Contact Info */}
           <motion.div variants={fadeInUp}>
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
               Contact Information
             </h2>
             <p className="text-gray-600 mb-8 text-sm md:text-base">
               It is our job to save you time so you can tend to your most
-              important commitments. To get started and learn more about how we
-              work, get in touch with us to speak to one of our representatives
-              and request a free quote.
+              important commitments...
             </p>
 
             <div className="space-y-4 text-blue-700 font-medium text-sm md:text-base">
