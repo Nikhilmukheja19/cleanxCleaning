@@ -186,7 +186,7 @@ const ContactUs = () => {
               </div>
               <div className="flex items-center gap-3">
                 <span>✉️</span>
-                <span>Email: Canexcleaning@gmail.com</span>
+                <span>Email: canexcleaning@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <span>📍</span>
