@@ -2,21 +2,30 @@ import { motion } from "framer-motion";
 
 const Loader = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-200">
+    <div className="min-h-screen flex items-center justify-center page-gradient">
       <div className="flex flex-col items-center">
-        {" "}
-        {/* New wrapper div */}
-        <motion.div
-          animate={{
-            rotate: 360,
-            transition: { repeat: Infinity, ease: "linear", duration: 1 },
-          }}
-          className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full"
-        />
-        <h3 className="mt-4 text-lg font-semibold text-gray-700">
-          Please wait
-        </h3>{" "}
-        {/* Added margin-top for spacing */}
+        <div className="relative">
+          <motion.div
+            animate={{
+              rotate: 360,
+              transition: { repeat: Infinity, ease: "linear", duration: 1 },
+            }}
+            className="w-14 h-14 border-[3px] border-brand-200 border-t-brand-600 rounded-full"
+          />
+          <motion.div
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="absolute inset-0 m-auto w-6 h-6 bg-brand-500/20 rounded-full"
+          />
+        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mt-5 text-sm font-medium text-slate-600"
+        >
+          Please wait...
+        </motion.p>
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import { motion } from "framer-motion";
+import PageLayout from "./ui/PageLayout";
+import SectionHeader from "./ui/SectionHeader";
+import Card from "./ui/Card";
+import Button from "./ui/Button";
 
 const services = [
   {
@@ -60,7 +63,7 @@ const highlights = [
   {
     icon: "💬",
     title: "24/7 Support",
-    desc: "Got questions or feedback? We’re here anytime.",
+    desc: "Got questions or feedback? We're here anytime.",
   },
 ];
 
@@ -87,40 +90,41 @@ const Services = () => {
   const handlebooking = () => {
     navigate("/clientform");
   };
+
   return (
-    <>
-      <Navbar />
-      <div className="bg-gradient-to-b from-blue-50 to-blue-100 p-8 min-h-screen">
-        {/* Hero Section */}
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
+    <PageLayout>
+      <div className="section-container section-padding">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-blue-800 text-center mb-4"
         >
-          Our Cleaning Services
-        </motion.h1>
-        <p className="text-center text-blue-700 max-w-2xl mx-auto mb-12">
-          Canex Cleaning provides reliable, eco-conscious, and quality-driven
-          cleaning solutions tailored for both homes and businesses.
-        </p>
+          <SectionHeader
+            badge="Our Services"
+            title="Our Cleaning Services"
+            subtitle="Canex Cleaning provides reliable, eco-conscious, and quality-driven cleaning solutions tailored for both homes and businesses."
+          />
+        </motion.div>
 
-        {/* Services Section */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24">
           {services.map((service, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.08 }}
               viewport={{ once: true }}
-              className="bg-white border-l-4 border-blue-500 rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl hover:scale-105 transition"
             >
-              <div className="text-5xl mb-4">{service.icon}</div>
-              <h2 className="text-xl font-semibold text-blue-800 mb-2">
-                {service.title}
-              </h2>
-              <p className="text-blue-700 text-sm">{service.description}</p>
+              <Card className="h-full text-center border-l-4 border-l-brand-500">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h2 className="text-lg font-semibold text-slate-900 mb-2">
+                  {service.title}
+                </h2>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -131,68 +135,64 @@ const Services = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-16 md:mb-24"
         >
-          <h2 className="text-3xl font-bold text-blue-800 text-center mb-8">
-            Why Canex Cleaning?
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <SectionHeader title="Why Canex Cleaning?" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow p-6 text-center"
-              >
+              <Card key={index} className="text-center">
                 <div className="text-3xl mb-3">{item.icon}</div>
-                <h4 className="text-lg font-semibold text-blue-700 mb-1">
+                <h4 className="text-base font-semibold text-slate-900 mb-1">
                   {item.title}
                 </h4>
-                <p className="text-sm text-blue-700">{item.desc}</p>
-              </div>
+                <p className="text-sm text-slate-600">{item.desc}</p>
+              </Card>
             ))}
           </div>
         </motion.div>
 
-        {/* Cleaning Process Section */}
+        {/* Cleaning Process */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-16 md:mb-24"
         >
-          <h2 className="text-3xl font-bold text-blue-800 text-center mb-10">
-            How It Works
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <SectionHeader title="How It Works" />
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {process.map((step, index) => (
-              <div key={index} className="bg-white shadow rounded-xl p-6">
-                <div className="text-blue-700 text-4xl font-bold mb-2">
+              <Card key={index} className="text-center relative">
+                <div className="w-12 h-12 rounded-2xl bg-brand-600 text-white text-xl font-bold flex items-center justify-center mx-auto mb-4">
                   {step.step}
                 </div>
-                <h4 className="text-lg font-semibold text-blue-800">
+                <h4 className="text-base font-semibold text-slate-900">
                   {step.title}
                 </h4>
-                <p className="text-sm text-blue-700 mt-1">{step.desc}</p>
-              </div>
+                <p className="text-sm text-slate-600 mt-2">{step.desc}</p>
+              </Card>
             ))}
           </div>
         </motion.div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <h3 className="text-2xl font-semibold text-blue-800 mb-4">
-            Ready for a cleaner space?
-          </h3>
-          <button
-            type="button"
-            onClick={() => handlebooking()}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition"
-          >
-            Book Your Cleaning Now
-          </button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <Card glass hover={false} padding="p-8 md:p-12" className="max-w-2xl mx-auto">
+            <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-4">
+              Ready for a cleaner space?
+            </h3>
+            <Button size="lg" onClick={() => handlebooking()}>
+              Book Your Cleaning Now
+            </Button>
+          </Card>
+        </motion.div>
       </div>
-    </>
+    </PageLayout>
   );
 };
 

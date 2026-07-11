@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import { Calendar, Mail, Smile, Send } from "lucide-react";
 import photo1 from "../assets/canex4.jpg";
 import photo2 from "../assets/canex2.jpg";
 import photo3 from "../assets/canex6.jpg";
 import photo4 from "../assets/image.png";
+import SectionHeader from "./ui/SectionHeader";
+import Card from "./ui/Card";
 
 const blogData = [
   {
@@ -16,7 +19,7 @@ const blogData = [
   {
     title: "Eco-Friendly Cleaning That Cares",
     content:
-      "We don’t just clean — we care. Our eco-conscious approach uses biodegradable, non-toxic products that are safe for your family, pets, and the planet. Sustainable cleaning is no longer a luxury — it's a responsibility.",
+      "We don't just clean — we care. Our eco-conscious approach uses biodegradable, non-toxic products that are safe for your family, pets, and the planet. Sustainable cleaning is no longer a luxury — it's a responsibility.",
     image: photo2,
     imageRight: false,
   },
@@ -36,139 +39,135 @@ const blogData = [
   },
 ];
 
+const processSteps = [
+  { icon: Calendar, label: "Book Form" },
+  { icon: Mail, label: "Get Confirmation" },
+  { icon: Smile, label: "Work Done" },
+  { icon: Send, label: "Complete" },
+];
+
 const ContentArea = () => {
   return (
     <>
-      <section className="py-20 px-6 max-w-7xl mx-auto overflow-x-hidden">
-        {blogData.map((item, index) => {
-          const imageVariant = {
-            hidden: {
-              opacity: 0,
-              x: item.imageRight ? 100 : -100,
-            },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: { duration: 0.7, ease: "easeOut" },
-            },
-          };
+      <section className="section-container section-padding">
+        <SectionHeader
+          badge="Why Choose Us"
+          title="The CaneX Difference"
+          subtitle="Discover what makes us the preferred cleaning partner for homes and businesses across the region."
+        />
 
-          const textVariant = {
-            hidden: {
-              opacity: 0,
-              x: item.imageRight ? -100 : 100,
-            },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: { duration: 0.7, ease: "easeOut" },
-            },
-          };
+        <div className="space-y-16 md:space-y-24">
+          {blogData.map((item, index) => {
+            const imageVariant = {
+              hidden: {
+                opacity: 0,
+                x: item.imageRight ? 60 : -60,
+              },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: { duration: 0.6, ease: "easeOut" },
+              },
+            };
 
-          return (
-            <div
-              key={index}
-              className={`flex flex-col md:flex-row items-center gap-12 mb-5 ${
-                item.imageRight ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              {/* Image Section */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ amount: 0.3, once: true }}
-                variants={imageVariant}
-                className="w-full md:w-1/2"
+            const textVariant = {
+              hidden: {
+                opacity: 0,
+                x: item.imageRight ? -60 : 60,
+              },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: { duration: 0.6, ease: "easeOut" },
+              },
+            };
+
+            return (
+              <div
+                key={index}
+                className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 ${
+                  item.imageRight ? "md:flex-row-reverse" : ""
+                }`}
               >
-                <Tilt
-                  glareEnable={true}
-                  glareMaxOpacity={0.25}
-                  glareColor="#00ffea"
-                  glarePosition="all"
-                  scale={1.04}
-                  transitionSpeed={450}
-                  className="rounded-2xl shadow-2xl cursor-pointer"
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ amount: 0.3, once: true }}
+                  variants={imageVariant}
+                  className="w-full md:w-1/2"
                 >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-72 object-cover rounded-2xl"
-                  />
-                </Tilt>
-              </motion.div>
+                  <Tilt
+                    glareEnable={true}
+                    glareMaxOpacity={0.15}
+                    glareColor="#0ea5e9"
+                    glarePosition="all"
+                    scale={1.02}
+                    transitionSpeed={400}
+                    className="rounded-2xl overflow-hidden shadow-card cursor-pointer"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-64 md:h-80 object-cover"
+                    />
+                  </Tilt>
+                </motion.div>
 
-              {/* Text Section */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ amount: 0.3, once: true }}
-                variants={textVariant}
-                className="md:w-1/2 bg-white bg-opacity-90 rounded-2xl p-10 shadow-lg"
-              >
-                <h2 className="text-3xl md:text-4xl font-extrabold mb-5 text-blue-800">
-                  {item.title}
-                </h2>
-                <p className="text-gray-700 text-lg leading-relaxed tracking-wide">
-                  {item.content}
-                </p>
-              </motion.div>
-            </div>
-          );
-        })}
-      </section>
-      <section className="py-20 bg-gray-50">
-        <div className="text-center max-w-3xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-blue-800 mb-4">
-            Our Working Process
-          </h2>
-          <p className="text-gray-600 text-lg">
-            Our Service Booking is very simple. Just fill out the service query
-            box and submit the form. After submission, we will contact you for
-            verification.
-          </p>
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ amount: 0.3, once: true }}
+                  variants={textVariant}
+                  className="md:w-1/2"
+                >
+                  <Card hover={false} padding="p-8 md:p-10">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-4 text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+                      {item.content}
+                    </p>
+                  </Card>
+                </motion.div>
+              </div>
+            );
+          })}
         </div>
+      </section>
 
-        <div className="flex flex-col items-center mt-16 px-6 md:flex-row md:justify-around relative">
-          {/* Dotted Curve Line */}
-          <div className="absolute top-16 left-0 right-0 mx-auto h-32 w-full pointer-events-none overflow-hidden">
-            <svg
-              viewBox="0 0 1000 100"
-              preserveAspectRatio="none"
-              className="w-full h-full"
-            >
-              <path
-                d="M0,50 Q250,0 500,50 T1000,50"
-                fill="none"
-                stroke="#ccc"
-                strokeWidth="3"
-                strokeDasharray="8,8"
-              />
-            </svg>
-          </div>
+      {/* Working Process */}
+      <section className="section-padding bg-white/60">
+        <div className="section-container">
+          <SectionHeader
+            badge="How It Works"
+            title="Our Working Process"
+            subtitle="Our Service Booking is very simple. Just fill out the service query box and submit the form. After submission, we will contact you for verification."
+          />
 
-          {/* Step 1 */}
-          <div className="flex flex-col items-center z-10">
-            <div className="text-4xl mb-2">📅</div>
-            <p className="text-lg font-semibold text-gray-800">Book Form</p>
-          </div>
-
-          {/* Step 2 */}
-          <div className="flex flex-col items-center z-10 mt-12 md:mt-0">
-            <div className="text-4xl mb-2">📩</div>
-            <p className="text-lg font-semibold text-gray-800">
-              Get Confirmation
-            </p>
-          </div>
-
-          {/* Step 3 */}
-          <div className="flex flex-col items-center z-10 mt-12 md:mt-0">
-            <div className="text-4xl mb-2">😊</div>
-            <p className="text-lg font-semibold text-gray-800">Work Done</p>
-          </div>
-
-          {/* End Arrow */}
-          <div className="flex flex-col items-center z-10 mt-12 md:mt-0">
-            <div className="text-4xl mb-2 text-blue-700">📤</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
+            {processSteps.map(({ icon: Icon, label }, index) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative flex flex-col items-center text-center"
+              >
+                {index < processSteps.length - 1 && (
+                  <div className="hidden md:block absolute top-8 left-[60%] w-full h-px bg-gradient-to-r from-brand-300 to-transparent" />
+                )}
+                <div className="w-16 h-16 rounded-2xl bg-brand-50 flex items-center justify-center mb-4 shadow-soft">
+                  <Icon className="w-7 h-7 text-brand-600" />
+                </div>
+                <p className="text-sm md:text-base font-semibold text-slate-800">
+                  {label}
+                </p>
+                <span className="mt-1 text-xs text-brand-600 font-medium">
+                  Step {index + 1}
+                </span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

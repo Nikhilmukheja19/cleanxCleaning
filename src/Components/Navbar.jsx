@@ -1,103 +1,143 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/canex cleaning.jpg"; // Use import for images
+import { motion, AnimatePresence } from "framer-motion";
+import logo from "../assets/canex cleaning.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   const menuItems = [
     { name: "Home", path: "/" },
-    // { name: "Clients", path: "/clients" },
     { name: "Services", path: "/services" },
     { name: "Industries", path: "/industries" },
     { name: "About Us", path: "/about" },
     { name: "Contact", path: "/contactus" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
   return (
     <>
-      <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-smooth ${
+          scrolled
+            ? "glass shadow-soft py-2"
+            : "bg-white/80 backdrop-blur-md py-3"
+        }`}
+      >
+        <div className="section-container flex justify-between items-center">
           {/* Logo & Brand */}
-          <Link to="/" className="flex items-center space-x-3">
-            <img
-              src={logo}
-              alt=" Logo"
-              className="h-10 w-10 object-cover rounded-full"
-            />
+          <Link
+            to="/"
+            className="flex items-center gap-3 group transition-smooth"
+          >
+            <div className="relative">
+              <img
+                src={logo}
+                alt="CaneX Cleaning Logo"
+                className="h-10 w-10 object-cover rounded-xl ring-2 ring-brand-100 group-hover:ring-brand-300 transition-smooth"
+              />
+            </div>
             <div>
-              <h1 className="text-xl font-bold text-blue-700">
+              <h1 className="text-lg font-bold text-slate-900 leading-tight">
                 CaneX Cleaning
               </h1>
-              <span className="text-sm text-gray-600">
+              <span className="text-xs text-slate-500 font-medium">
                 Building Maintenance LTD.
               </span>
             </div>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8 text-gray-700">
-            {menuItems.map((item, idx) => (
+          <div className="hidden md:flex items-center gap-1">
+            {menuItems.map((item) => (
               <Link
                 to={item.path}
-                key={idx}
-                className={`hover:text-blue-700 ${
+                key={item.path}
+                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-smooth ${
                   location.pathname === item.path
-                    ? "text-blue-700 font-medium"
-                    : ""
+                    ? "text-brand-700"
+                    : "text-slate-600 hover:text-brand-700 hover:bg-brand-50"
                 }`}
               >
                 {item.name}
+                {location.pathname === item.path && (
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-brand-600 rounded-full"
+                  />
+                )}
               </Link>
             ))}
             <Link
               to="/clientform"
-              className="bg-sky-500 text-white font-semibold px-5 py-2 rounded hover:bg-sky-600 transition"
+              className="ml-3 inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-smooth focus-ring bg-brand-600 text-white hover:bg-brand-700 shadow-soft hover:shadow-card px-4 py-2 text-sm"
             >
               Book Now
             </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
+          <button
+            className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-smooth focus-ring"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden bg-white px-4 pb-4 space-y-2 shadow-md">
-            {menuItems.map((item, idx) => (
-              <Link
-                to={item.path}
-                key={idx}
-                onClick={() => setIsOpen(false)}
-                className={`block py-1 text-gray-700 hover:text-blue-700 ${
-                  location.pathname === item.path
-                    ? "text-blue-700 font-medium"
-                    : ""
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Link
-              to="/clientform"
-              className="block text-center bg-sky-500 text-white font-semibold px-4 py-2 rounded hover:bg-sky-700 transition"
-              onClick={() => setIsOpen(false)}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25 }}
+              className="md:hidden overflow-hidden border-t border-slate-100"
             >
-              Book Now
-            </Link>
-          </div>
-        )}
+              <div className="section-container py-4 space-y-1">
+                {menuItems.map((item) => (
+                  <Link
+                    to={item.path}
+                    key={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-smooth ${
+                      location.pathname === item.path
+                        ? "bg-brand-50 text-brand-700"
+                        : "text-slate-600 hover:bg-slate-50"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+                <Link
+                  to="/clientform"
+                  onClick={() => setIsOpen(false)}
+                  className="block pt-2 text-center font-semibold rounded-xl transition-smooth bg-brand-600 text-white hover:bg-brand-700 px-6 py-2.5 text-sm"
+                >
+                  Book Now
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
-      {/* Push content below navbar */}
-      <div className="h-[70px] md:h-[80px]" />
+      <div className="h-[72px] md:h-[76px]" />
     </>
   );
 };

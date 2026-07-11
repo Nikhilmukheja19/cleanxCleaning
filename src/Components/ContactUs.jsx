@@ -1,15 +1,22 @@
+/* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { useState } from "react";
 import axios from "axios";
+import { Building2, MessageCircle, Mail, MapPin } from "lucide-react";
 import Loader from "./Loader";
+import Input from "./ui/Input";
+import Button from "./ui/Button";
+import Card from "./ui/Card";
+import SectionHeader from "./ui/SectionHeader";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const ContactUs = () => {
+const ContactUs = ({ embedded = false }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const [loading, setLoading] = useState(false);
@@ -24,8 +31,6 @@ const ContactUs = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    // Clear error for this field on change
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
@@ -64,139 +69,119 @@ const ContactUs = () => {
 
   if (loading) return <Loader />;
 
-  return (
-    <>
-      <Navbar />
-      <motion.div
-        className="bg-white py-8 px-6 md:px-12 lg:px-24"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-      >
-        <motion.h1
-          className="text-3xl md:text-4xl font-bold text-blue-700 mb-4 text-center"
-          variants={fadeInUp}
-        >
-          Contact Us
-        </motion.h1>
-        <motion.p
-          className="text-center max-w-3xl mx-auto text-gray-700 mb-12 text-base md:text-lg"
-          variants={fadeInUp}
-        >
-          Have questions or need a custom cleaning solution? Reach out to
-          Cleaning — we are here to help with reliable, tailored services for
-          every space.
-        </motion.p>
+  const contactInfo = [
+    { icon: Building2, label: "Office", value: "604-518-0623" },
+    { icon: MessageCircle, label: "Estimates", value: "778-239-1390" },
+    { icon: Mail, label: "Email", value: "canexcleaning@gmail.com" },
+    {
+      icon: MapPin,
+      label: "Address",
+      value: "6736 13b street, V3W 7M5, Surrey, B.C",
+    },
+  ];
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left: Contact Form */}
-          <motion.div variants={fadeInUp}>
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
-              Send a Message
-            </h2>
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <div>
-                <motion.input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
-                  whileFocus={{ scale: 1.02 }}
-                />
-                {errors.name && (
-                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-                )}
-              </div>
+  const content = (
+    <motion.div
+      className="section-container section-padding"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={fadeInUp}
+    >
+      <SectionHeader
+        badge="Get in Touch"
+        title="Contact Us"
+        subtitle="Have questions or need a custom cleaning solution? Reach out to CaneX Cleaning — we are here to help with reliable, tailored services for every space."
+      />
 
-              <div>
-                <motion.input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
-                  whileFocus={{ scale: 1.02 }}
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-                )}
-              </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        {/* Contact Form */}
+        <Card hover={false} padding="p-6 md:p-8">
+          <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mb-6">
+            Send a Message
+          </h2>
+          <form className="space-y-5" onSubmit={handleSubmit}>
+            <Input
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              error={errors.name}
+            />
+            <Input
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              error={errors.email}
+            />
+            <Input
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              error={errors.phone}
+            />
+            <Input
+              name="message"
+              type="textarea"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              error={errors.message}
+            />
+            <Button type="submit" className="w-full sm:w-auto">
+              Send Message
+            </Button>
+          </form>
+        </Card>
 
-              <div>
-                <motion.input
-                  type="text"
-                  placeholder="Phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
-                  whileFocus={{ scale: 1.02 }}
-                />
-                {errors.phone && (
-                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-                )}
-              </div>
-
-              <div>
-                <motion.textarea
-                  rows="4"
-                  placeholder="Message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
-                  whileFocus={{ scale: 1.02 }}
-                />
-                {errors.message && (
-                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-                )}
-              </div>
-
-              <motion.button
-                type="submit"
-                className="bg-blue-700 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md"
-                whileHover={{ scale: 1.05 }}
-              >
-                Send Message
-              </motion.button>
-            </form>
-          </motion.div>
-
-          {/* Right: Contact Info */}
-          <motion.div variants={fadeInUp}>
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
+        {/* Contact Info */}
+        <div className="flex flex-col gap-6">
+          <Card hover={false} padding="p-6 md:p-8" className="flex-1">
+            <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mb-4">
               Contact Information
             </h2>
-            <p className="text-gray-600 mb-8 text-sm md:text-base">
+            <p className="text-slate-600 mb-8 text-sm md:text-base leading-relaxed">
               It is our job to save you time so you can tend to your most
-              important commitments...
+              important commitments. Reach out anytime — we&apos;re happy to
+              help.
             </p>
 
-            <div className="space-y-4 text-blue-700 font-medium text-sm md:text-base">
-              <div className="flex items-center gap-3">
-                <span>🏢</span>
-                <span>Office: 604-518-0623</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span>💬</span>
-                <span>Estimates: 778-239-1390</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span>✉️</span>
-                <span>Email: canexcleaning@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span>📍</span>
-                <span>Address: 6736 13b street, V3W 7M5, Surrey, B.C</span>
-              </div>
+            <div className="space-y-5">
+              {contactInfo.map(({ icon: Icon, label, value }) => (
+                <div key={label} className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-brand-600" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">
+                      {label}
+                    </p>
+                    <p className="text-sm md:text-base font-medium text-slate-800 mt-0.5">
+                      {value}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-          </motion.div>
+          </Card>
         </div>
-      </motion.div>
-    </>
+      </div>
+    </motion.div>
+  );
+
+  if (embedded) {
+    return <section className="bg-slate-50/50">{content}</section>;
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col page-gradient">
+      <Navbar />
+      <main className="flex-1">{content}</main>
+      <Footer />
+    </div>
   );
 };
 
