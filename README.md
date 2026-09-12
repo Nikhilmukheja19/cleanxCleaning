@@ -1,8 +1,30 @@
-# React + Vite
+# CaneX Cleaning
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Full-stack booking website for CaneX Cleaning. The frontend uses React/Vite and the API uses Express, MongoDB, JWT authentication, and Nodemailer.
 
-Currently, two official plugins are available:
+## Local setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Copy `.env.example` to `.env` in both `cleanxCleaning` and `cleanxcleaningBackend`.
+2. Set `VITE_BASE_URL`, `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL`, and email credentials.
+3. Start the API from `cleanxcleaningBackend`:
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+4. Start the frontend from `cleanxCleaning`:
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+Create an admin account with `POST /auth/register`, then sign in at `/admin`. Admins can filter bookings and update statuses; status changes notify the customer by email.
+
+## Validation
+
+```bash
+npm run lint
+npm run build
+```

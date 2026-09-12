@@ -9,6 +9,8 @@ import About from "./Components/About";
 import ClientForm from "./Components/ClientForm";
 import ScrollToTop from "./Components/ScroolToTop";
 import LearnMore from "./Components/LearnMore";
+import AdminLogin from "./Components/AdminLogin";
+import AdminDashboard from "./Components/AdminDashboard";
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/clientform" element={<ClientForm />} />
         <Route path="/learnmore" element={<LearnMore />} />
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/orders" element={<AdminDashboard />} />
       </Routes>
     </div>
   );

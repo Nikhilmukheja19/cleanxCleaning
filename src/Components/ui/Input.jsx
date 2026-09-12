@@ -15,6 +15,7 @@ const Input = ({
   icon: Icon,
   rows,
   className = "",
+  ...props
 }) => {
   const isTextarea = type === "textarea";
   const inputClass = `${inputBase} ${Icon ? "pl-11" : ""} ${
@@ -46,6 +47,7 @@ const Input = ({
             value={value}
             onChange={onChange}
             className={inputClass}
+            {...props}
             whileFocus={{ scale: 1.005 }}
           />
         ) : (
@@ -57,6 +59,7 @@ const Input = ({
             value={value}
             onChange={onChange}
             className={inputClass}
+            {...props}
             whileFocus={{ scale: 1.005 }}
           />
         )}

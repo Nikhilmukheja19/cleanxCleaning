@@ -2,10 +2,12 @@
 import Swal from "sweetalert2";
 import "animate.css";
 
-const ShowAlert = () => {
-  Swal.fire({
+const ShowAlert = (text) => {
+  return Swal.fire({
     title: "🎉 Booking Confirmed!",
-    text: "Thank you for choosing Canex Cleaning.\nWe’ll be at your service shortly!",
+    text:
+      text ||
+      "Thank you for choosing Canex Cleaning.\nWe’ll be at your service shortly!",
     icon: "success",
     confirmButtonText: "Awesome!",
     background: "#f0f9ff",

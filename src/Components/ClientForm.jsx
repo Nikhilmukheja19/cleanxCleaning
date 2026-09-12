@@ -34,6 +34,7 @@ const ClientForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -61,9 +62,10 @@ const ClientForm = () => {
     if (!validate()) return;
 
     setLoading(true);
+    setSubmitError("");
 
     try {
-      const orderresponse = await axios.post(
+      const orderResponse = await axios.post(
         `${BASE_URL}/order/orderSaved`,
         formData,
         {
@@ -71,14 +73,17 @@ const ClientForm = () => {
         }
       );
 
-      if (orderresponse) {
-        setLoading(false);
-        await ShowAlert();
-        navigate("/");
-
-        await axios.post(`${BASE_URL}/order/sendmail`, formData, {
-          headers: { "Content-Type": "application/json" },
-        });
+      if (orderResponse.status === 201) {
+        let confirmationMessage =
+          "Your booking was saved successfully. We will contact you shortly.";
+        try {
+          await axios.post(`${BASE_URL}/order/sendmail`, formData, {
+            headers: { "Content-Type": "application/json" },
+          });
+        } catch {
+          confirmationMessage =
+            "Your booking was saved, but the confirmation email could not be sent.";
+        }
 
         setFormData({
           fullName: "",
@@ -92,9 +97,18 @@ const ClientForm = () => {
           serviceType: "",
         });
         setErrors({});
+        await ShowAlert(confirmationMessage);
+        navigate("/");
       }
     } catch (error) {
-      console.error(error);
+      setSubmitError(
+        error.response?.data?.error ||
+          error.response?.data?.message ||
+          (error.request
+            ? "Unable to reach the booking server. Please start the backend and try again."
+            : "Unable to submit the booking. Please check your details and try again.")
+      );
+    } finally {
       setLoading(false);
     }
   };
@@ -137,6 +151,14 @@ const ClientForm = () => {
             </p>
           </div>
 
+          {submitError && (
+            <div
+              role="alert"
+              className="mb-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+            >
+              {submitError}
+            </div>
+          )}
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <Input
